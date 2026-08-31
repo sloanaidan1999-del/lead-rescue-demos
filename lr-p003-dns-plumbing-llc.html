@@ -153,7 +153,7 @@ input[type=range]{width:100%}
       <div class="alert-grid">
         <div>Customer</div><div>Jordan</div>
         <div>Phone</div><div>(312) 555-0148</div>
-        <div>Area</div><div>Skokie</div>
+        <div>Address</div><div>8124 N. Lincoln Ave., Skokie</div>
         <div>Issue</div><div>Water is leaking from under my kitchen sink and getting worse.</div>
         <div>Requested</div><div>As soon as possible</div>
         <div>Status</div><div style="color:var(--green);font-weight:850">QUALIFIED — READY FOR CALLBACK</div>
@@ -219,8 +219,8 @@ function runDemo(){
    msg("Hi — this is DNS Plumbing. Sorry we missed you. I can get your request to the team right away. What issue are you dealing with?","bot");
  });
  later(6900,()=>msg("Water is leaking from under my kitchen sink and getting worse.","user"));
- later(9000,()=>msg("Thanks. What area are you in?","bot"));
- later(10600,()=>msg("Skokie","user"));
+ later(9000,()=>msg("Thanks. What address do you need service at?","bot"));
+ later(10600,()=>msg("8124 N. Lincoln Ave., Skokie","user"));
  later(12000,()=>msg("How quickly do you need help?","bot"));
  later(13500,()=>msg("As soon as possible.","user"));
  later(16000,()=>{
