@@ -72,6 +72,37 @@ input[type=range]{width:100%}
 .disclaimer{margin-top:18px;padding:14px;border-left:3px solid var(--amber);background:rgba(255,215,106,.055);color:#ebdfba;font-size:12px;line-height:1.55}
 .footer{margin:30px 0 6px;text-align:center;color:#70869b;font-size:12px}
 .hl{color:var(--cyan);font-weight:850}
+
+.business-reveal{
+  opacity:.35;
+  transform:translateY(8px);
+  transition:opacity .55s ease, transform .55s ease, padding .55s ease,
+             background .55s ease, border-color .55s ease, box-shadow .55s ease;
+  border:1px solid transparent;
+  border-radius:16px;
+  padding:10px 14px;
+  margin-left:-14px;
+  margin-right:-14px;
+}
+
+.business-reveal.show{
+  opacity:1;
+  transform:none;
+  border-color:rgba(255,124,124,.42);
+  background:linear-gradient(
+    90deg,
+    rgba(255,124,124,.10),
+    rgba(103,177,255,.06)
+  );
+  box-shadow:0 18px 45px rgba(0,0,0,.20);
+}
+
+.alert.prominent{
+  box-shadow:
+    0 0 0 1px rgba(255,124,124,.18),
+    0 22px 60px rgba(255,124,124,.16);
+}
+
 </style>
 
 <style>
@@ -186,7 +217,7 @@ input[type=range]{width:100%}
       <div id="chat" class="chat"></div>
     </div>
 
-    <div style="margin-top:18px;margin-bottom:10px">
+    <div id="businessReveal" class="business-reveal" style="margin-top:18px;margin-bottom:10px">
       <div class="kicker" style="color:#ffb6b6">What the business receives</div>
       <div style="font-size:14px;color:var(--soft);line-height:1.5">
       After the customer replies, Lead Rescue sends your team a structured summary so they know who to call and why.
@@ -259,28 +290,56 @@ function resetDemo(){
  timers.forEach(clearTimeout);timers=[];
  for(let i=1;i<=5;i++)document.getElementById('s'+i).classList.remove('active');
  document.getElementById('chat').innerHTML='';
- document.getElementById('alert').classList.remove('show');
+ const alert=document.getElementById('alert');
+ if(alert) alert.classList.remove('show','prominent');
+ const business=document.getElementById('businessReveal');
+ if(business) business.classList.remove('show');
 }
 function runDemo(){
  resetDemo();
  active(1);
- later(1700,()=>active(2));
- later(3600,()=>{
+ later(3200,()=>active(2));
+ later(7000,()=>{
    active(3);
    msg("Hi — this is Elite Sewer & Drain. Sorry we missed you. I can get your request to the team right away. What issue are you dealing with?","bot");
  });
- later(6900,()=>msg("Water is leaking from under my kitchen sink and getting worse.","user"));
- later(9000,()=>msg("Thanks. What address do you need service at?","bot"));
- later(10600,()=>msg("8240 N. Crawford Ave., Skokie","user"));
- later(12000,()=>msg("How quickly do you need help?","bot"));
- later(13500,()=>msg("As soon as possible.","user"));
- later(16000,()=>{
-   active(4);
+ later(11000,()=>msg("Water is leaking from under my kitchen sink and getting worse.","user"));
+ later(14500,()=>msg("Thanks. What address do you need service at?","bot"));
+ later(17500,()=>msg("8240 N. Crawford Ave., Skokie","user"));
+ later(20500,()=>msg("How quickly do you need help?","bot"));
+ later(23000,()=>msg("As soon as possible.","user"));
+ later(25500,()=>{
    msg("Got it. I’m sending this to the team now so they have the details when they follow up.","bot");
  });
- later(18400,()=>{
+
+ later(28500,()=>{
+   active(4);
+ });
+ later(33500,()=>{
    active(5);
-   document.getElementById('alert').classList.add('show');
+ });
+
+ later(34500,()=>{
+   const business=document.getElementById('businessReveal');
+   if(business){
+     business.classList.add('show');
+   }
+ });
+
+ later(35500,()=>{
+   const alert=document.getElementById('alert');
+   const business=document.getElementById('businessReveal');
+
+   if(alert){
+     alert.classList.add('show','prominent');
+   }
+
+   if(business){
+     business.scrollIntoView({
+       behavior:'smooth',
+       block:'center'
+     });
+   }
  });
 }
 
