@@ -162,6 +162,11 @@ input[type=range]{width:100%}
     <h2>A customer calls at <span class="hl">11:43 p.m.</span></h2>
     <p style="margin-top:0"><strong style="color:var(--green)">This is the product.</strong> Run the scenario and watch the service respond, qualify the lead, and alert your team.</p>
 
+    
+    <div class="top-sim-controls" style="display:flex;gap:10px;margin:16px 0 18px;">
+      <button onclick="runDemo()">▶ Run scenario</button>
+      <button class="secondary" onclick="resetDemo()">Reset</button>
+    </div>
     <div class="timeline">
       <div class="step" id="s1"><div class="time">11:43:00</div><div><div class="title">Incoming high-intent call</div><div class="desc">A customer needs help.</div></div></div>
       <div class="step" id="s2"><div class="time">11:43:18</div><div><div class="title">Call is not answered</div><div class="desc">Lead Rescue detects the missed opportunity.</div></div></div>
@@ -170,10 +175,7 @@ input[type=range]{width:100%}
       <div class="step" id="s5"><div class="time">11:44:24</div><div><div class="title">Team alerted</div><div class="desc">The office or on-call staff receives a structured summary ready for callback.</div></div></div>
     </div>
 
-    <div class="controls">
-      <button onclick="runDemo()">▶ Run scenario</button>
-      <button class="secondary" onclick="resetDemo()">Reset</button>
-    </div>
+    
   </div>
 
   <div class="card">
